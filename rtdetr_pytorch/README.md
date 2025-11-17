@@ -42,6 +42,10 @@ Notes
 pip install -r requirements.txt
 ```
 
+```bash
+conda env create -f environment.yml  
+```
+
 </details>
 
 
