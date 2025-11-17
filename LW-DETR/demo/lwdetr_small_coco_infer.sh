@@ -1,13 +1,13 @@
-model_name='lwdetr_small_coco'
+model_name='lwdetr_tiny_coco'
 checkpoint=$1
 image_path=$2
 output_dir=$3
 
-python demo/demo.py \
+python demo.py \
     --encoder vit_tiny \
-    --vit_encoder_num_layers 10 \
-    --window_block_indexes 0 1 3 6 7 9 \
-    --out_feature_indexes 2 4 5 9 \
+    --vit_encoder_num_layers 6 \
+    --window_block_indexes 0 2 4 \
+    --out_feature_indexes 1 3 5 \
     --dec_layers 3 \
     --group_detr 13 \
     --two_stage \
@@ -18,6 +18,7 @@ python demo/demo.py \
     --dec_n_points 2 \
     --bbox_reparam \
     --lite_refpoint_refine \
+    --num_queries 300 \
     --num_select 300 \
     --weights $checkpoint \
     --input $image_path \
