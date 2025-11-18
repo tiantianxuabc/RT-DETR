@@ -28,7 +28,7 @@ from torchvision import transforms
 from util.misc import nested_tensor_from_tensor_list
 
 # COCO classes
-COCO_CLASSES = [
+COCO_CLASSES1 = [
     '__background__', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
     'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A', 'stop sign',
     'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
@@ -42,6 +42,11 @@ COCO_CLASSES = [
     'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'N/A', 'book',
     'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
+# COCO classes
+COCO_CLASSES = [
+    '__background__', 'FuelFillerFlap', 'FuelInlet', 'FuelCap', 'FuelRectDoor', 'FuelCircleDoor', 'Tire'
+]
+
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
@@ -52,6 +57,7 @@ def get_args_parser():
                         help='device to use for training / testing')
     parser.add_argument('--pretrained_encoder', type=str, default=None, 
                         help="Path to the pretrained encoder.")
+    
     
     # * Backbone
     parser.add_argument('--encoder', default='vit_tiny', type=str,
@@ -91,7 +97,7 @@ def get_args_parser():
 
     # * Dataset infomation
     parser.add_argument('--dataset_file', default='coco')
-
+    parser.add_argument('--num_classes', default=91, type=int, help="coco has 91 class")
     # * Matcher
     parser.add_argument('--set_cost_class', default=2, type=float,
                         help="Class coefficient in the matching cost")
@@ -170,6 +176,8 @@ def visualize_detections(image, boxes, labels, scores, conf_thresh, output_path)
 
             text = f"{COCO_CLASSES[label]} {score:.2f}"
             draw.text((xmin, ymin - 10), text, fill="green", font=font)
+    
+    image.show()
 
     image.save(output_path)
 

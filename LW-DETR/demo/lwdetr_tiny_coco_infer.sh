@@ -18,8 +18,9 @@ python demo.py \
     --dec_n_points 2 \
     --bbox_reparam \
     --lite_refpoint_refine \
-    --num_queries 300 \
-    --num_select 300 \
+    --num_queries 100 \
+    --num_select 100 \
+    --num_classes 7 \
     --weights $checkpoint \
     --input $image_path \
     --output $output_dir/$model_name \

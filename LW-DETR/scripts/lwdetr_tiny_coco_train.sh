@@ -6,7 +6,7 @@ python main.py \
     --lr_encoder 1.5e-4 \
     --batch_size 4 \
     --weight_decay 1e-4 \
-    --epochs 60 \
+    --epochs 600 \
     --lr_drop 60 \
     --lr_vit_layer_decay 0.8 \
     --lr_component_decay 0.7 \
@@ -29,6 +29,7 @@ python main.py \
     --cls_loss_coef 1 \
     --num_select 100 \
     --dataset_file coco \
+    --num_classes 7 \
     --coco_path $coco_path \
     --square_resize_div_64 \
     --use_ema \

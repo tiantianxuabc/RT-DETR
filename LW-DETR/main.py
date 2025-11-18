@@ -48,6 +48,7 @@ def get_args_parser():
                         help='gradient clipping max norm')
     parser.add_argument('--lr_vit_layer_decay', default=0.8, type=float)
     parser.add_argument('--lr_component_decay', default=1.0, type=float)
+    
 
     # drop args 
     # dropout and stochastic depth drop rate; set at most one to non-zero
@@ -136,6 +137,7 @@ def get_args_parser():
 
     # dataset parameters
     parser.add_argument('--dataset_file', default='coco')
+    parser.add_argument('--num_classes', type=int, default=91, help='coco has 90 classes')
     parser.add_argument('--coco_path', type=str)
     parser.add_argument('--square_resize_div_64', action='store_true')
 
